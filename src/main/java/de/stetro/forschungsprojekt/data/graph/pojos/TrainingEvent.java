@@ -1,16 +1,18 @@
-package de.stetro.forschungsprojekt.data.er.pojos;
+package de.stetro.forschungsprojekt.data.graph.pojos;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import org.springframework.data.neo4j.annotation.NodeEntity;
+import org.springframework.data.neo4j.annotation.RelatedTo;
 
-@Entity
+@NodeEntity
 public class TrainingEvent extends Event {
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "leader_id")
+
+    @RelatedTo(elementClass = User.class)
     private User leader;
     private String goal;
+
+    public TrainingEvent() {
+
+    }
 
     public TrainingEvent(String title, String location, String goal, User leader) {
         super(title, location);
