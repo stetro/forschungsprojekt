@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="todoApplication">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>TODO App</title>
+    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="container" ng-controller="todoController">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 well">
+            <h3>Todo App</h3>
+            <ul class="list list-unstyled">
+                <li ng-repeat="todo in todos">
+                    <input ng-click="updateTodo(todo)" type="checkbox" ng-checked="todo.done"/>
+                    {{todo.text}}
+                    <a href="#" class="btn-xs pull-right" ng-click="deleteTodo(todo)"><i class="glyphicon glyphicon-remove-circle "></i></a>
+                </li>
+            </ul>
+            <form ng-submit="saveTodo()">
+                <input type="text" class="form-control" ng-model="newTodo"/>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="components/jquery/dist/jquery.min.js"></script>
+<script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="components/angular/angular.min.js"></script>
+<script src="components/angular-resource/angular-resource.min.js"></script>
+<script src="app/todo.js"></script>
+</body>
+</html>
