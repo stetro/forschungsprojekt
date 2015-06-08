@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reasoning OWL</title>
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/moon.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>Reasoning in OWL</h2>
+		<p>Einführung in Description Logic und dem <br>Tableau Algorithm</p>
+		<small>von <a href="http://twitter.com/stetro">Steffen Tröster</a></small>
+            </section>
+        </div>
+    </div>
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.js"></script>
+
+    <script>
+        // Full list of configuration options available at:
+
+        var dir = 'bower_components/reveal.js/';
+
+        Reveal.initialize(
+        {
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            // Optional reveal.js plugins
+            dependencies: [
+            {
+                src: dir + 'lib/js/classList.js',
+                condition: function()
+                {
+                    return !document.body.classList;
+                }
+            },
+            {
+                src: dir + 'plugin/markdown/marked.js',
+                condition: function()
+                {
+                    return !!document.querySelector(
+                        '[data-markdown]');
+                }
+            },
+            {
+                src: dir + 'plugin/markdown/markdown.js',
+                condition: function()
+                {
+                    return !!document.querySelector(
+                        '[data-markdown]');
+                }
+            },
+            {
+                src: dir + 'plugin/highlight/highlight.js',
+                async: true,
+                condition: function()
+                {
+                    return !!document.querySelector(
+                        'pre code');
+                },
+                callback: function()
+                {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {
+                src: dir + 'plugin/zoom-js/zoom.js',
+                async: true
+            },
+            {
+                src: dir + 'plugin/notes/notes.js',
+                async: true
+            }]
+        });
+    </script>
+</body>
+
+</html>

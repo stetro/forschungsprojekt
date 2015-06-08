@@ -1,0 +1,19 @@
+{
+  "name": "slides",
+  "version": "0.0.0",
+  "homepage": "https://github.com/stetro/forschungsprojekt",
+  "authors": [
+    "Steffen Tröster <steffen.troester@googlemail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "~3.1.0"
+  }
+}
