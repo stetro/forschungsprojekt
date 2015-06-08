@@ -1,88 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Reasoning OWL</title>
-    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/moon.css">
-    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
-
-</head>
-
-<body>
-    <div class="reveal">
-        <div class="slides">
-            <section>
-                <h2>Reasoning in OWL</h2>
-		<p>Einführung in Description Logic und dem <br>Tableau Algorithm</p>
-		<small>von <a href="http://twitter.com/stetro">Steffen Tröster</a></small>
-            </section>
+    <head>
+        <meta charset="UTF-8">
+        <title>Reasoning OWL</title>
+        <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="bower_components/reveal.js/css/theme/moon.css">
+        <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h2>Reasoning in OWL</h2>
+                    <p>Einführung in Description Logic und dem
+                    <br>Tableau Algorithm</p>
+                    <small>von <a href="http://twitter.com/stetro">Steffen Tröster</a></small>
+                </section>
+                <section>
+                    <h3>Reasoning</h3>
+                    <p><small>
+                        ist die Möglichkeit auf einer Menge von <br>Fakten und Axiomen mittels Software
+                        logische Schlüsse zu schließen
+                        </small>
+                    </p>
+                    <p>
+                        benötigt Wissensrepräsentation von
+                        <br/>Regel und Faktenwissen
+                    </p>
+                </section>
+                <section>
+                    <section>
+                        <h3>Semantische Netze</h3>
+                        <ul>
+                            <li>gut verständlich
+                                <br/>
+                                <small>Informationsgewinn durch Traversieren der Kanten</small>
+                            </li>
+                            <li>einfach erweiterbar
+                                <br/>
+                                <small>gewinnt schnell an Komplexität<br/>Einschränkungen fehlen<br/>logische Schlussfolgerung nur bedingt möglich<br/>(Learning Networks, Exceutable Networks, Assertional Networks)</small>
+                            </li>
+                        </ul>
+                        <img src="img/semantic_net.png" alt="" style="padding:5px; background:white;">
+                    </section>
+                    <section>
+                        <h3>Ontologien</h3>
+                        <ul>
+                            <li>streng axiomatisch Aufgebaut
+                                <br>und formalisiert
+                                <br>
+                                <small>bilden Grundlage
+                                für weitreichende logische Ableitungsregeln</small>
+                            </li>
+                            <li>Konzept des gemeinsamen Verständnis
+                                <br>
+                                <small>erhält durch Implementation (W3C:OWL DL) ein <br/>logischen Sprachkonstrukt - Description Logic</small>
+                            </li>
+                        </ul>
+                        <img src="img/ontology.png" alt="" style="padding:5px; background:white;">
+                    </section>
+                    <section>
+                        <h3>OWL - Web Ontology Language</h3>
+                        <ul>
+                            <li>Erweiterung zu RDFS</br>
+                                <small>hinzufügen von verschiedenen Constraints und DL</small>
+                            </li>
+                            <li>Repräsentationsstandard XML</br>
+                                <small>Turtle ist eine Alternative</small>
+                            </li>
+                            <li>Einführung der Description Logic</br>
+                            </li>
+                            <li>Entwicklungen von Untersprachen
+                                <ul>
+                                    <li>OWL Lite</br>
+                                        <small>künstliche Limitierung für Altsysteme, Constraints fehlen</small>
+                                    </li>
+                                    <li>OWL DL</br>
+                                        <small>Ausreichende Ausdrucksmöglichkeit um </br>noch performant reason zu können</small>
+                                    </li>
+                                    <li>OWL Full</br>
+                                        <small>Volles Sprachkonzept von DL enthalten</small>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <h3>Description Logic</h3>
+                    <section>
+                        <small>ist eine Sammlung von Bestandteilen der First Order Logic (FOL)</small>
+                        <ul>
+                            <li>Warum nicht FOL?
+                                <ul>
+                                    <li>sehr Ausdrucksstark</li>
+                                    <li>daher komplex und unübersichtlich</li>
+                                    <li>schwierig im theoretischen Beweis</li>
+                                    <li>Prädikatenlogik ist keine Markupsprache</li>
+                                </ul>
+                            </li>
+                            <li>angemessene Wahl von Fragmenten pro DL</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>DLs sind Fragmente aus der FOL und bieten
+                            <br>trotzdem genug Ausdruck</li>
+                            <li>DLs sind entscheidbar</li>
+                            <li>Für die Fragmente der FOL existieren
+                            <br>mengentheoretische Ausdrücke für die Ausführung</li>
+                            <li>OWL DL 2 basiert auf \(SHROIQ(D)\)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>$$ALS$$</h4>
+                        <p>
+                            <small>besteht aus Classes, Roles/Properties, Individuals, Atomic Types, Constructors</small>
+                        </p>
+                        <p>
+                            Atomic Types:
+                            <br/>
+                            <small>
+                            $$Student(Christian)$$
+                            $$Lecture(DBW)$$
+                            $$visitsLecture(Christian, DBW)$$
+                            </small>
+                        </p>
+                        <p>
+                            Constructors :
+                            <br/>
+                            <small>
+                            Negation \(\neg\), Konjunktion \(\sqcap\), Disjunktion \(\sqcup\) und Quantoren
+                            \(\forall R.C\)
+                            \(\exists R.C\)
+                            </small>
+                        </p>
+                    </section>
+                    <section>
+                        <p>
+                            Class Inclusion:
+                            <br/>
+                            <small>
+                            $$Professor \sqsubseteq FacultyMember$$
+                            $$\forall x Professor(x) \rightarrow FacultyMember(x)$$
+                            </small>
+                        </p>
+                        <p>
+                            Class Equivalence:
+                            <br/>
+                            <small>
+                            $$Professor \equiv FacultyMember$$
+                            $$\forall x Professor(x) \leftrightarrow FacultyMember(x)$$
+                            </small>
+                        </p>
+                        <p>
+                            Complex Classes:
+                            <br/>
+                            <small>
+                            $$Professor \sqsubseteq (Person \sqcap Employee) \sqcup (Person \sqcap Student)$$
+                            $$\forall x Professor(x) \rightarrow (Person(x) \wedge Employee(x)) \vee (Person(x) \wedge Student(x))$$
+                            </small>
+                        </p>
+                    </section>
+                    <section>
+                        <p>
+                            Allquantor:
+                            <br/><small>
+                            "Jeder Prüfung muss immer von einem Professor beaufsichtigt werden"<br>
+                            $$Examination \sqsubseteq \forall hasSupervisor.Professor$$
+                            $$\forall x Examination(x) \rightarrow (\forall y hasSupervisor(x, y) \rightarrow Professor(x))$$
+                            </small>
+                        </p>
+                        <p>
+                            Existenzquantor:
+                            <br/><small>
+                            "Jeder Prüfung muss von mindestens einer Person beaufsichtigt werden"<br>
+                            $$Examination \sqsubseteq \exists hasSupervisor.Person$$
+                            $$\forall x Examination(x) \rightarrow (\exists y hasSupervisor(x, y) \rightarrow Person(x))$$
+                            </small>
+                        </p>
+                    </section>
+                    <section>
+                        <h4>Wissensrepräsentation</h4>
+                        <p>
+                            <small>
+                            Bestehend aus ABox und TBox
+                            </small>
+                        </p>
+                        <p>
+                            TBox
+                            <br><small>beinhaltet alle Class Definitionen mit \(C \equiv D\) und \(C \sqsubseteq D\)
+                            $$Human \sqsubseteq \exists parentOf.Human$$
+                            $$Orphan \equiv Human \sqcap \neg \exists hasParent.Alive$$
+                            </small>
+                        </p>
+                        <p>
+                            ABox
+                            <br><small>beinhaltet alle Individuals \(C(a)\) und Rollen \(R(a,b)\)
+                            $$Orphan(harryPotter)$$
+                            $$hasParent(harryPotter, jamesPotter)$$
+                            </small>
+                        </p>
+                    </section>
+                    <section>
+                        Fragmente für Descriptions Logics <br>
+                        <img src="img/DescriptionLogics.png" alt="" width="33%" style="padding:5px; background:white;">
+                    </section>
+                </section>
+                <section>
+                    <h3>Tableaux Algorithm</h3>
+                    <section>
+                        <p><small>ist ein Beweisalgorithmus - Er beweist die Korrektheit einer Aussage <br>indem er die Negation einer Aussage auf Wiederspruch prüft</small></p>
+                        <br>
+                        <p>Beispiel aus der Aussagenlogik: <br>
+                            <small>\((\neg p \vee \neg q) \wedge (\neg p \vee q ) \wedge \neg q\)</small><br>
+                            <small>negiert: \(( p \wedge  q) \vee ( p \wedge \neg q ) \vee q\)</small><br>
+                        </p>
+                    </section>
+                    <section>
+                        <p>Prüfbaum</p>
+                        <img src="img/tableaux.png" alt="" width="33%" style="padding:5px; background:white;">
+                    </section>
+                    <section>
+                        <p>Anwendung in ALC:</p>
+                        <ul>
+                            <li>Umwandlung in Negationsnormalform</li>
+                            <li></li>
+                        </ul>
+                    </section>
+                </section>
+            </div>
         </div>
-    </div>
-    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
-    <script src="bower_components/reveal.js/js/reveal.js"></script>
-
-    <script>
+        <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+        <script src="bower_components/reveal.js/js/reveal.js"></script>
+        <script>
         // Full list of configuration options available at:
-
         var dir = 'bower_components/reveal.js/';
-
         Reveal.initialize(
         {
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
-            transition: 'slide', // none/fade/slide/convex/concave/zoom
-            // Optional reveal.js plugins
-            dependencies: [
-            {
-                src: dir + 'lib/js/classList.js',
-                condition: function()
-                {
-                    return !document.body.classList;
-                }
-            },
-            {
-                src: dir + 'plugin/markdown/marked.js',
-                condition: function()
-                {
-                    return !!document.querySelector(
-                        '[data-markdown]');
-                }
-            },
-            {
-                src: dir + 'plugin/markdown/markdown.js',
-                condition: function()
-                {
-                    return !!document.querySelector(
-                        '[data-markdown]');
-                }
-            },
-            {
-                src: dir + 'plugin/highlight/highlight.js',
-                async: true,
-                condition: function()
-                {
-                    return !!document.querySelector(
-                        'pre code');
-                },
-                callback: function()
-                {
-                    hljs.initHighlightingOnLoad();
-                }
-            },
-            {
-                src: dir + 'plugin/zoom-js/zoom.js',
-                async: true
-            },
-            {
-                src: dir + 'plugin/notes/notes.js',
-                async: true
-            }]
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Optional reveal.js plugins
+        dependencies: [
+        {
+        src: dir + 'lib/js/classList.js',
+        condition: function()
+        {
+        return !document.body.classList;
+        }
+        },
+        {
+        src: dir + 'plugin/highlight/highlight.js',
+        async: true,
+        condition: function()
+        {
+        return !!document.querySelector(
+        'pre code');
+        },
+        callback: function()
+        {
+        hljs.initHighlightingOnLoad();
+        }
+        },
+        {
+        src: dir + 'plugin/zoom-js/zoom.js',
+        async: true
+        },
+        {
+        src: dir + 'plugin/notes/notes.js',
+        async: true
+        },
+        {
+        src: dir + 'plugin/math/math.js',
+        async: true
+        }]
         });
-    </script>
-</body>
-
+        </script>
+    </body>
 </html>
