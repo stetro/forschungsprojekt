@@ -13,7 +13,7 @@
                 <section>
                     <h2>Reasoning in OWL</h2>
                     <p>Einführung in Description Logic und dem
-                    <br>Tableau Algorithm</p>
+                    <br>Tableau Algorithm mit ALC</p>
                     <small>von <a href="http://twitter.com/stetro">Steffen Tröster</a></small>
                 </section>
                 <section>
@@ -68,8 +68,6 @@
                             <li>Repräsentationsstandard XML</br>
                                 <small>Turtle ist eine Alternative</small>
                             </li>
-                            <li>Einführung der Description Logic</br>
-                            </li>
                             <li>Entwicklungen von Untersprachen
                                 <ul>
                                     <li>OWL Lite</br>
@@ -113,7 +111,7 @@
                         </ul>
                     </section>
                     <section>
-                        <h4>$$ALS$$</h4>
+                        <h4>$$ALC$$</h4>
                         <p>
                             <small>besteht aus Classes, Roles/Properties, Individuals, Atomic Types, Constructors</small>
                         </p>
@@ -188,14 +186,14 @@
                             </small>
                         </p>
                         <p>
-                            TBox
+                            TBox (Terminologisches Wissen)
                             <br><small>beinhaltet alle Class Definitionen mit \(C \equiv D\) und \(C \sqsubseteq D\)
                             $$Human \sqsubseteq \exists parentOf.Human$$
                             $$Orphan \equiv Human \sqcap \neg \exists hasParent.Alive$$
                             </small>
                         </p>
                         <p>
-                            ABox
+                            ABox (Wissen um Individuen)
                             <br><small>beinhaltet alle Individuals \(C(a)\) und Rollen \(R(a,b)\)
                             $$Orphan(harryPotter)$$
                             $$hasParent(harryPotter, jamesPotter)$$
@@ -208,25 +206,92 @@
                     </section>
                 </section>
                 <section>
+                    <h3>Closed World Assumption</h3>
+                    <p><small>In einer geschlossenen Welt ist alles "falsch", was nicht <br>explizit als wahr, bekannt und eingetragen ist.</small></p>
+                    <h3>Open World Assumption</h3>
+                    <p><small>Die OWA hat als Grundannahme, dass eine Wissensbasis immer potentiell unvollständig ist. <br>
+                        Fördert Wiederverwendung von Wissen, da man sie ergänzen kann. <br>Komplexer zu behandeln -> kommt aber der Realität näher
+                    </small></p>
+                </section>
+                <section>
                     <h3>Tableaux Algorithm</h3>
                     <section>
                         <p><small>ist ein Beweisalgorithmus - Er beweist die Korrektheit einer Aussage <br>indem er die Negation einer Aussage auf Wiederspruch prüft</small></p>
-                        <br>
+                        
                         <p>Beispiel aus der Aussagenlogik: <br>
                             <small>\((\neg p \vee \neg q) \wedge (\neg p \vee q ) \wedge \neg q\)</small><br>
                             <small>negiert: \(( p \wedge  q) \vee ( p \wedge \neg q ) \vee q\)</small><br>
                         </p>
+                        <p>Regeln <br><small>1. \( \wedge \) wird zu einer Baumkante</small><br><small>2. \( \vee \) wird eine Aufsplittung</small><br><small>3. Letztes Blatt wird zum Anfang traversiert und geprüft</small></p>
                     </section>
                     <section>
                         <p>Prüfbaum</p>
                         <img src="img/tableaux.png" alt="" width="33%" style="padding:5px; background:white;">
                     </section>
                     <section>
-                        <p>Anwendung in ALC:</p>
+                        <p>Anwendung in ALC</p>
+                    </section>
+                    <section>
+                        <p>NegationsNormalForm <br> <br><small>Ersetze C \(\equiv\) D durch C \(\sqsubseteq\) D und D \(\sqsubseteq\) C</small><br><small>Ersetze C \(\sqsubseteq\) D durch \(\neg\)C \(\sqcup\) D</small></p>
+                        <img src="img/nnf.png" alt="" width="30%" style="padding:5px; background:white;">
+                    </section>
+                    <section>
+                        <p>Anwendung in ALC</p>
+                        <p>NNF <br>
+                            \(P \sqsubseteq (E \sqcap U) \sqcup \neg ( \neg E \sqcup D)\) <br>
+                            \(\neg P \sqcup (E \sqcap U) \sqcup \neg( E \sqcap \neg D)\)
+                        </small></p>
+                    
+                    </section>
+                    <section>
+                        <p>Probleme?</p>
+                        <p><small>
+                            Terminierung <br>
+                            \(SHROIQ(D)\) implementierung <br>
+                            Performance <br>
+                        </small></p>
+                    </section>
+                </section>
+                <section>
+                    
+                    <section>
+                        <h3>OWL Reasoner</h3>
+                        <p><small>Welche Implementierungen gibt es und wie kann man sie einsetzen?</small></p>
+                    </section>
+                    <section>
+                        <h3>Alternatives Markup</h3>
+                        <p>XML/RDF als Standard <br> Turtle, N-Triples,  N-Quads, JSON-LD, TriG and TriX</p>
+                    </section>
+                    <section>
+                        <h3>Triplestore</h3>
                         <ul>
-                            <li>Umwandlung in Negationsnormalform</li>
-                            <li></li>
+                            <li>Native Store<br><small>Jena TDB, Sesame, 4Store ...</small></li>
+                            <li>RDBMS Store<br><small>Jena SDB, IBM DB2, Virtuoso ...</small></li>
+                            <li>NoSQL Store<br><small>CumulusRDF</small></li>
                         </ul>
+                    </section>
+                    <section>
+                        <h3>Integrierte Reasoner</h3>
+                        <p><small>begrenzte OWL DL Unterstützung</small></p>
+                        <ul>
+                            <li><a href="http://jena.apache.org/">Jena Inference API</a><br></li>
+                            <li><a href="http://rdf4j.org/">Sesame</a> <br><small></small></li>
+                        </ul>
+                        <h3>Externe Reasoner</h3>
+                        <p><small>fast vollständige OWL DL Unterstützung <br>Durch OWL API auch mit anderen Stores einsetzbar</small></p>
+                        <ul>
+                            <li><a href="https://github.com/complexible/pellet">Pellet</a></li>
+                            <li><a href="http://hermit-reasoner.com/">HermiT</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Demo</h3>
+                    </section>
+                </section>
+                <section>
+                    <section><h3>Quellen</h3></section>
+                    <section>
+                        <h3>Fragen?</h3>
                     </section>
                 </section>
             </div>
