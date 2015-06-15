@@ -5,6 +5,7 @@
         <title>Reasoning OWL</title>
         <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
         <link rel="stylesheet" href="bower_components/reveal.js/css/theme/moon.css">
+        <!--<link rel="stylesheet" href="bower_components/reveal.js/css/print/pdf.css">-->
         <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
     </head>
     <body>
@@ -25,7 +26,7 @@
                     </p>
                     <p>
                         benötigt Wissensrepräsentation von
-                        <br/>Regel und Faktenwissen
+                        <br/>Regeln und Faktenwissen
                     </p>
                 </section>
                 <section>
@@ -46,7 +47,7 @@
                     <section>
                         <h3>Ontologien</h3>
                         <ul>
-                            <li>streng axiomatisch Aufgebaut
+                            <li>streng axiomatisch aufgebaut
                                 <br>und formalisiert
                                 <br>
                                 <small>bilden Grundlage
@@ -164,7 +165,7 @@
                         <p>
                             Allquantor:
                             <br/><small>
-                            "Jeder Prüfung muss immer von einem Professor beaufsichtigt werden"<br>
+                            "Jede Prüfung muss immer von einem Professor beaufsichtigt werden"<br>
                             $$Examination \sqsubseteq \forall hasSupervisor.Professor$$
                             $$\forall x Examination(x) \rightarrow (\forall y hasSupervisor(x, y) \rightarrow Professor(x))$$
                             </small>
@@ -230,6 +231,7 @@
                     </section>
                     <section>
                         <p>Anwendung in ALC</p>
+			<p><small>Jede Art der Anfrage an einen Reasoner lässt sich in eine Aussage für den Tableaux Algorithmus umwandeln</small></p>
                     </section>
                     <section>
                         <p>NegationsNormalForm <br> <br><small>Ersetze C \(\equiv\) D durch C \(\sqsubseteq\) D und D \(\sqsubseteq\) C</small><br><small>Ersetze C \(\sqsubseteq\) D durch \(\neg\)C \(\sqcup\) D</small></p>
@@ -243,6 +245,7 @@
                         </small></p>
                     
                     </section>
+
                     <section>
                         <p>Probleme?</p>
                         <p><small>
@@ -275,7 +278,6 @@
                         <p><small>begrenzte OWL DL Unterstützung</small></p>
                         <ul>
                             <li><a href="http://jena.apache.org/">Jena Inference API</a><br></li>
-                            <li><a href="http://rdf4j.org/">Sesame</a> <br><small></small></li>
                         </ul>
                         <h3>Externe Reasoner</h3>
                         <p><small>fast vollständige OWL DL Unterstützung <br>Durch OWL API auch mit anderen Stores einsetzbar</small></p>
@@ -343,6 +345,8 @@
         async: true
         }]
         });
+Reveal.configure({ slideNumber: false });
+Reveal.configure({ slideNumber: 'c / t' });
         </script>
     </body>
 </html>
