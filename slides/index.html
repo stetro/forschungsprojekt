@@ -204,6 +204,7 @@
                     <section>
                         Fragmente für Descriptions Logics <br>
                         <img src="img/DescriptionLogics.png" alt="" width="33%" style="padding:5px; background:white;">
+                        <p><small>Knowledge Engineering with Semantic Web Technologies (H. Sack, 2014)</small></p>
                     </section>
                 </section>
                 <section>
@@ -231,7 +232,7 @@
                     </section>
                     <section>
                         <p>Anwendung in ALC</p>
-			<p><small>Jede Art der Anfrage an einen Reasoner lässt sich in eine Aussage für den Tableaux Algorithmus umwandeln</small></p>
+                        <p><small>Jede Art der Anfrage an einen Reasoner lässt sich in eine Aussage für den Tableaux Algorithmus umwandeln</small></p>
                     </section>
                     <section>
                         <p>NegationsNormalForm <br> <br><small>Ersetze C \(\equiv\) D durch C \(\sqsubseteq\) D und D \(\sqsubseteq\) C</small><br><small>Ersetze C \(\sqsubseteq\) D durch \(\neg\)C \(\sqcup\) D</small></p>
@@ -243,9 +244,8 @@
                             \(P \sqsubseteq (E \sqcap U) \sqcup \neg ( \neg E \sqcup D)\) <br>
                             \(\neg P \sqcup (E \sqcap U) \sqcup \neg( E \sqcap \neg D)\)
                         </small></p>
-                    
+                        
                     </section>
-
                     <section>
                         <p>Probleme?</p>
                         <p><small>
@@ -274,24 +274,28 @@
                         </ul>
                     </section>
                     <section>
-                        <h3>Integrierte Reasoner</h3>
-                        <p><small>begrenzte OWL DL Unterstützung</small></p>
-                        <ul>
-                            <li><a href="http://jena.apache.org/">Jena Inference API</a><br></li>
-                        </ul>
-                        <h3>Externe Reasoner</h3>
-                        <p><small>fast vollständige OWL DL Unterstützung <br>Durch OWL API auch mit anderen Stores einsetzbar</small></p>
-                        <ul>
-                            <li><a href="https://github.com/complexible/pellet">Pellet</a></li>
-                            <li><a href="http://hermit-reasoner.com/">HermiT</a></li>
-                        </ul>
+                        <h3>Reasoner</h3>
+                        <img src="img/reasoner.png" alt="" style="padding:5px; background:white;">
+                        <p><small>Benchmarking OWL reasoners (J Bock et al., 2008)</small></p>
                     </section>
                     <section>
                         <h3>Demo</h3>
                     </section>
                 </section>
                 <section>
-                    <section><h3>Quellen</h3></section>
+                    <section>
+                        <h3>Quellen</h3>
+                        <ul>
+                            <li>
+                                Semantische Technologien, Andreas Dengel <br>
+                                <small>Grundlagen - Konzepte - Anwendungen</small>
+                            </li>
+                            <li>Open HPI - Dr. Harald Sack <br>
+                                <small>Knowledge Engineering with Semantic Web Technologie - Hasso-Plattner-Institut</small>
+                            </li>
+                            <li><a href="http://jena.apache.org/documentation/inference/index.html">Jena Inference API Documentation</a></li>
+                        </ul>
+                    </section>
                     <section>
                         <h3>Fragen?</h3>
                     </section>
@@ -345,8 +349,8 @@
         async: true
         }]
         });
-Reveal.configure({ slideNumber: false });
-Reveal.configure({ slideNumber: 'c / t' });
+        Reveal.configure({ slideNumber: false });
+        Reveal.configure({ slideNumber: 'c / t' });
         </script>
     </body>
 </html>
