@@ -232,125 +232,155 @@
                     </section>
                     <section>
                         <p>Anwendung in ALC</p>
-                        <p><small>Jede Art der Anfrage an einen Reasoner lässt sich in eine Aussage für den Tableaux Algorithmus umwandeln</small></p>
+                        
                     </section>
                     <section>
                         <p>NegationsNormalForm <br> <br><small>Ersetze C \(\equiv\) D durch C \(\sqsubseteq\) D und D \(\sqsubseteq\) C</small><br><small>Ersetze C \(\sqsubseteq\) D durch \(\neg\)C \(\sqcup\) D</small></p>
                         <img src="img/nnf.png" alt="" width="30%" style="padding:5px; background:white;">
                     </section>
                     <section>
+                        <p>ALC Regelsatz</p>
+                        <img src="img/alc.png" alt="" style="padding:5px; background:white;">
+                        <p><small>Knowledge Engineering with Semantic Web Technologies (H. Sack, 2014)</small></p>
+                    </section>
+                    <section>
                         <p>Anwendung in ALC</p>
-                        <p>NNF <br>
-                            \(P \sqsubseteq (E \sqcap U) \sqcup \neg ( \neg E \sqcup D)\) <br>
-                            \(\neg P \sqcup (E \sqcap U) \sqcup \neg( E \sqcap \neg D)\)
+                        <p><small>Wissensbasis: \(P \sqsubseteq (M \sqcap UA) \sqcup  ( M \sqcap \neg S)\)</small></p>
+                        <p><small>Annahme: \(P \sqsubseteq M\)</small></p>
+                        <p>Wissensbasis in NNF:</p>
+                        <p> <small>\(\left\{\neg P \sqcup (M \sqcap UA) \sqcup ( M \sqcap \neg S) , (P \sqcap \neg E ) (a) \right\}\)</small>
                         </small></p>
-                        
+                    </section>
+                    <section>
+                        <p>Tableaux</p>
+                        <p style="text-align:left; width:700px; float:right">
+                            <small class="fragment">\((1)(P \sqcap \neg E ) (a)\)</small><br>
+                            <small class="fragment">\((2)P(a)\)</small><br>
+                            <small class="fragment">\((3)\neg E (a)\)</small><br>
+                            <small class="fragment">\((4)(\neg P \sqcup (M \sqcap UA) \sqcup ( M \sqcap \neg S) ) (a)\)</small><br>
+                            <small class="fragment"><strong>\((5)(\neg P )(a)\)</strong></small>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span style="display:inline-block;">
+                                <small class="fragment">\((6)( (M \sqcap UA) \sqcup ( M \sqcap \neg S) ) (a)\)</small><br>
+                                <small style="display:inline-block;">
+                                <span class="fragment">\((7)(M \sqcap UA)(a)\)</span> <br>
+                                <strong class="fragment">\((9)(M)(a)\)</strong> <br>
+                                <span class="fragment">\((11)(UA)(a)\)</span>
+                                </small>&nbsp;
+                                <small style="display:inline-block;">
+                                <span class="fragment">\((8) ( M \sqcap \neg S) ) (a)\)</span><br>
+                                <strong class="fragment">\((10) ( M ) ) (a)\)</strong><br>
+                                <span class="fragment">\((12) ( \neg S ) (a)\)</span>
+                                </small>
+                            </span>
+                        </p>
                     </section>
                     <section>
                         <p>Probleme?</p>
-                        <p><small>
-                            Terminierung <br>
-                            \(SHROIQ(D)\) implementierung <br>
-                            Performance <br>
-                        </small></p>
-                    </section>
+                        <p><small>Nur Beweise?</small></p>
+                        <p><small>Terminierung</small></p>
+                        <p><small>\(SHROIQ(D)\) implementierung </small></p>
+                        <p><small>Performance</small></p>
+                    </small></p>
+                </section>
+            </section>
+            <section>
+                
+                <section>
+                    <h3>OWL Reasoner</h3>
+                    <p><small>Welche Implementierungen gibt es und wie kann man sie einsetzen?</small></p>
                 </section>
                 <section>
-                    
-                    <section>
-                        <h3>OWL Reasoner</h3>
-                        <p><small>Welche Implementierungen gibt es und wie kann man sie einsetzen?</small></p>
-                    </section>
-                    <section>
-                        <h3>Alternatives Markup</h3>
-                        <p>XML/RDF als Standard <br> Turtle, N-Triples,  N-Quads, JSON-LD, TriG and TriX</p>
-                    </section>
-                    <section>
-                        <h3>Triplestore</h3>
-                        <ul>
-                            <li>Native Store<br><small>Jena TDB, Sesame, 4Store ...</small></li>
-                            <li>RDBMS Store<br><small>Jena SDB, IBM DB2, Virtuoso ...</small></li>
-                            <li>NoSQL Store<br><small>CumulusRDF</small></li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Reasoner</h3>
-                        <img src="img/reasoner.png" alt="" style="padding:5px; background:white;">
-                        <p><small>Benchmarking OWL reasoners (J Bock et al., 2008)</small></p>
-                    </section>
-                    <section>
-                        <h3>Demo</h3>
-                    </section>
+                    <h3>Alternatives Markup</h3>
+                    <p>XML/RDF als Standard <br> Turtle, N-Triples,  N-Quads, JSON-LD, TriG and TriX</p>
                 </section>
                 <section>
-                    <section>
-                        <h3>Quellen</h3>
-                        <ul>
-                            <li>
-                                Semantische Technologien, Andreas Dengel <br>
-                                <small>Grundlagen - Konzepte - Anwendungen</small>
-                            </li>
-                            <li>Open HPI - Dr. Harald Sack <br>
-                                <small>Knowledge Engineering with Semantic Web Technologie - Hasso-Plattner-Institut</small>
-                            </li>
-                            <li><a href="http://jena.apache.org/documentation/inference/index.html">Jena Inference API Documentation</a></li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Fragen?</h3>
-                    </section>
+                    <h3>Triplestore</h3>
+                    <ul>
+                        <li>Native Store<br><small>Jena TDB, Sesame, 4Store ...</small></li>
+                        <li>RDBMS Store<br><small>Jena SDB, IBM DB2, Virtuoso ...</small></li>
+                        <li>NoSQL Store<br><small>CumulusRDF</small></li>
+                    </ul>
                 </section>
-            </div>
+                <section>
+                    <h3>Reasoner</h3>
+                    <img src="img/reasoner.png" alt="" style="padding:5px; background:white;">
+                    <p>+ Jena(RDFS, OWL Lite)</p>
+                    <p><small>Benchmarking OWL reasoners (J Bock et al., 2008)</small></p>
+                </section>
+                <section>
+                    <h3>Demo</h3>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Quellen</h3>
+                    <ul>
+                        <li>
+                            Semantische Technologien, Andreas Dengel <br>
+                            <small>Grundlagen - Konzepte - Anwendungen</small>
+                        </li>
+                        <li>Open HPI - Dr. Harald Sack <br>
+                            <small>Knowledge Engineering with Semantic Web Technologie - Hasso-Plattner-Institut</small>
+                        </li>
+                        <li><a href="http://jena.apache.org/documentation/inference/index.html">Jena Inference API Documentation</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Fragen?</h3>
+                </section>
+            </section>
         </div>
-        <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
-        <script src="bower_components/reveal.js/js/reveal.js"></script>
-        <script>
-        // Full list of configuration options available at:
-        var dir = 'bower_components/reveal.js/';
-        Reveal.initialize(
-        {
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
-        // Optional reveal.js plugins
-        dependencies: [
-        {
-        src: dir + 'lib/js/classList.js',
-        condition: function()
-        {
-        return !document.body.classList;
-        }
-        },
-        {
-        src: dir + 'plugin/highlight/highlight.js',
-        async: true,
-        condition: function()
-        {
-        return !!document.querySelector(
-        'pre code');
-        },
-        callback: function()
-        {
-        hljs.initHighlightingOnLoad();
-        }
-        },
-        {
-        src: dir + 'plugin/zoom-js/zoom.js',
-        async: true
-        },
-        {
-        src: dir + 'plugin/notes/notes.js',
-        async: true
-        },
-        {
-        src: dir + 'plugin/math/math.js',
-        async: true
-        }]
-        });
-        Reveal.configure({ slideNumber: false });
-        Reveal.configure({ slideNumber: 'c / t' });
-        </script>
-    </body>
+    </div>
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.js"></script>
+    <script>
+    // Full list of configuration options available at:
+    var dir = 'bower_components/reveal.js/';
+    Reveal.initialize(
+    {
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    transition: 'slide', // none/fade/slide/convex/concave/zoom
+    // Optional reveal.js plugins
+    dependencies: [
+    {
+    src: dir + 'lib/js/classList.js',
+    condition: function()
+    {
+    return !document.body.classList;
+    }
+    },
+    {
+    src: dir + 'plugin/highlight/highlight.js',
+    async: true,
+    condition: function()
+    {
+    return !!document.querySelector(
+    'pre code');
+    },
+    callback: function()
+    {
+    hljs.initHighlightingOnLoad();
+    }
+    },
+    {
+    src: dir + 'plugin/zoom-js/zoom.js',
+    async: true
+    },
+    {
+    src: dir + 'plugin/notes/notes.js',
+    async: true
+    },
+    {
+    src: dir + 'plugin/math/math.js',
+    async: true
+    }]
+    });
+    Reveal.configure({ slideNumber: false });
+    Reveal.configure({ slideNumber: 'c / t' });
+    </script>
+</body>
 </html>
