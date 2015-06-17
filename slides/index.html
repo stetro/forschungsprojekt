@@ -156,8 +156,8 @@
                             Complex Classes:
                             <br/>
                             <small>
-                            $$Professor \sqsubseteq (Person \sqcap Employee) \sqcup (Person \sqcap Student)$$
-                            $$\forall x Professor(x) \rightarrow (Person(x) \wedge Employee(x)) \vee (Person(x) \wedge Student(x))$$
+                            $$Professor \sqsubseteq (Person \sqcap Employee) \sqcup (Person \sqcap \neg Student)$$
+                            $$\forall x Professor(x) \rightarrow (Person(x) \wedge Employee(x)) \vee (Person(x) \wedge \neg Student(x))$$
                             </small>
                         </p>
                     </section>
@@ -379,7 +379,7 @@
     async: true
     }]
     });
-    Reveal.configure({ slideNumber: false });
+    Reveal.configure({ slideNumber: true });
     Reveal.configure({ slideNumber: 'c / t' });
     </script>
 </body>
